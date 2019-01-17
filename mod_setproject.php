@@ -25,6 +25,12 @@ function selectProject()
         {
             $session->clear("active_project");
         }
+        $return = JFactory::getApplication()->input->getString('return', false);
+        if ($return !== false)
+        {
+            JFactory::getApplication()->redirect(base64_decode($return));
+            jexit();
+        }
     }
     $db = JFactory::getDbo();
     $query = $db->getQuery(true);
