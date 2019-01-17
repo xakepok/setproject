@@ -14,17 +14,7 @@ JHtml::_('formbehavior.chosen', 'select');
 // Access to module parameters
 $domain = $params->get('domain', 'https://www.joomla.org');
 ?>
-<div class="row-fluid">
-    <div class="span6 form-horizontal">
-        <div class="row-fluid">
-            <div class="span3">
-                <?php echo JText::sprintf('MOD_SETPROJECT_ACTIVE_PROJECT_IS');?>
-            </div>
-            <div class="span3">
-                <form action="" method="post" name="adminForm" id="adminForm">
-                    <?php echo selectProject(); ?>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+<?php echo JText::sprintf('MOD_SETPROJECT_ACTIVE_PROJECT_IS');?>
+&nbsp;
+<?php echo selectProject(); ?>
+
