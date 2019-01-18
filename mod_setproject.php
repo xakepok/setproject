@@ -17,6 +17,7 @@ $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
 function selectProject()
 {
     $project = JFactory::getApplication()->input->getString('set_active_project', '');
+    $return = JFactory::getApplication()->input->getString('return', false);
     $session = JFactory::getSession();
     if (is_numeric($project))
     {
@@ -24,10 +25,23 @@ function selectProject()
         if ($project === 0)
         {
             $session->clear("active_project");
+            if ($return !== false) {
+                JFactory::getApplication()->redirect(base64_decode($return));
+                jexit();
+            }
         }
-        $return = JFactory::getApplication()->input->getString('return', false);
         if ($return !== false)
         {
+            if ($return !== false) {
+                JFactory::getApplication()->redirect(base64_decode($return));
+                jexit();
+            }
+        }
+    }
+    if ($project == '')
+    {
+        $session->clear("active_project");
+        if ($return !== false) {
             JFactory::getApplication()->redirect(base64_decode($return));
             jexit();
         }
